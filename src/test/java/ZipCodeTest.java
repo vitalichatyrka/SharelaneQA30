@@ -1,5 +1,4 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -23,8 +22,9 @@ Expected result: The 'Oops, error on page. ZIP code should have 5 digits' error 
     public void checkZipCode4Digits() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
         WebDriver browser = new ChromeDriver();
-        browser.manage().timeouts().implicitlyWait(10L, TimeUnit.SECONDS);
+        browser.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         browser.get("https://www.sharelane.com/cgi-bin/register.py");
+
         browser.findElement(By.name("zip_code")).sendKeys("1234");
         browser.findElement(By.cssSelector("[value=Continue]")).click();
         // <input type="text" name="zip_code" value="">
